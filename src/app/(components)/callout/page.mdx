@@ -1,0 +1,77 @@
+export const metadata = {
+  title: 'Callout',
+  description: 'Callout component',
+}
+
+# Callout
+
+A Callout component is a text excerpt that draws attention to specific or important content e.g. Notifications
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/callout
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/callout
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/callout
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/callout
+```
+
+</CodeGroup>
+
+## Variants
+
+In Moja UI, the Callout component has 4 main variants, which can be defined by the <code>variant</code> prop on the root layer.
+
+- Success Callout
+- Error Callout
+- Info Callout
+- Warning Callout
+
+## Usage
+
+The Callout component can be used as follows:
+
+```js
+import { Callout } from '@mojaui/callout'
+
+export function Index() {
+  return (
+    <Callout variant="success">
+      <Callout.Icon></Callout.Icon>
+      <Callout.Content>
+        <Callout.Title></Callout.Title>
+        <Callout.Description></Callout.Description>
+      </Callout.Content>
+      <Callout.Close></Callout.Close>
+    </Callout>
+  )
+}
+```
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property name="variant" type="success | error | info | warning"></Property>
+  <Property
+    name="onStateChange"
+    type="(state: open | close) => void"
+  ></Property>
+  <Property name="[data-state]" type="open | close"></Property>
+</Properties>
+
+## Examples
+
+<Note>Callout Example use cases go here</Note>

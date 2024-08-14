@@ -1,0 +1,79 @@
+export const metadata = {
+  title: 'Button',
+  description: 'Button component',
+}
+
+# Button
+
+An interactive element used to trigger actions.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/button
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/button
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/button
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/button
+```
+
+</CodeGroup>
+
+## Usage
+
+The Button component can be used as follows:
+
+```js
+import { Button } from '@mojaui/accordion'
+
+export function Index() {
+  return (
+    <Button>
+      Text
+      <Button.Icon></Button.Icon>
+    </Button>
+  )
+}
+```
+
+## Variants
+
+In Moja UI, we have 2 types of Button displays, which can be defined using the <code>display</code> prop on the Button component
+
+- Compact Button
+- Fluid Button
+
+In addition to this, there are 9 tyes of buttons, which can be defined using the <code>variant</code> prop on the Button component
+
+- Primary
+- Secondary
+- OutlineGray
+- White
+- OutlineLight
+- Dark
+- Danger
+- DangerOutline
+- DangerBorderless
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property name="variant" type="ButtonVariants"></Property>
+  <Property name="display" type="compact | fluid"></Property>
+</Properties>
+
+## Examples
+
+<Note>Button Example use cases go here</Note>

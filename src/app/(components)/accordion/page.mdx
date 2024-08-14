@@ -1,0 +1,161 @@
+export const metadata = {
+  title: 'Accordion',
+  description: 'Accordion component',
+}
+
+# Accordion
+
+A collapsible vertical stack component that displays high-level options, which can expand or collapse to reveal more information.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/accordion
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/accordion
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/accordion
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/accordion
+```
+
+</CodeGroup>
+
+## Variants
+
+In Moja UI, we have 2 types of Accordions, which can be defined by the <code>variant</code> prop on the root layer.
+
+- Flat Accordion
+- Basic Accordion
+
+## Usage
+
+The Accordion component can be used as follows:
+
+```js
+import { Accordion } from '@mojaui/accordion'
+
+export function Index() {
+  return (
+    <Accordion.Root variant="flat">
+      <Accordion.Item>
+        <Accordion.Trigger>
+          <Accordion.TriggerIcon></Accordion.TriggerIcon>
+          <Accordion.SubText></Accordion.SubText>
+        </Accordion.Trigger>
+        <Accordion.Content></Accordion.Content>
+        <Accordion.Badge></Accordion.Badge>
+      </Accordion.Item>
+    </Accordion.Root>
+  )
+}
+```
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property name="variant" type="flat | basic">
+Define which variant of the accordion component you want to use.
+  </Property>
+
+  <Property name="defaultValue" type="string">
+    This specifies which item should be expanded by default.
+  </Property>
+  <Property name="collapsible" type="boolean">
+    This controls whether or not an accordion item can be closed after it has
+    been expanded
+  </Property>
+  <Property name="multiple" type="boolean">
+    This controls whether multiple accordion items can be expanded at the same
+    time
+  </Property>
+  <Property name="onFocusChange" type="(details: FocusChangeDetails) => void">
+    This callback runs when the focused accordion item changes
+  </Property>
+  <Property name="onChange" type="(expandedIndex: number ) => void">
+    This callback runs when an accordion item is expanded or collapsed
+  </Property>
+</Properties>
+
+### Item
+
+<Properties>
+  <Property name="value" type="string">
+    The initial index of the accordion item to be expanded
+  </Property>
+  <Property name="disabled" type="boolean">
+    The accordion item will be disabled if set to <code>true</code>
+  </Property>
+  <Property name="focusable" type="boolean">
+    The accordion item will be focusable if set to <code>true</code>
+  </Property>
+  <Property name="[data-hover]">
+    This is present when an item is hovered
+  </Property>
+  <Property name="[data-focus]">
+    This is present when an item is focused
+  </Property>
+  <Property name="[data-disabled]">
+    This is present when an item is disabled
+  </Property>
+</Properties>
+
+### Content
+
+<Properties>
+  <Property name="[data-state]" type="open | closed"></Property>
+  <Property name="[data-focus]">
+    This is present when an item is focused
+  </Property>
+  <Property name="[data-disabled]">
+    This is present when an item is disabled
+  </Property>
+</Properties>
+
+### Trigger
+
+<Properties>
+  <Property name="[data-state]" type="open | closed"></Property>
+</Properties>
+
+## Accessibility
+
+This component adheres to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns accordion" target="_blank">
+WAI-ARIA design pattern for accordions </a>
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Space">
+    When focus is on an trigger of a collapsed item, the item is expanded
+  </Property>
+  <Property name="Enter">
+    When focus is on an trigger of a collapsed item, the item is expanded
+  </Property>
+  <Property name="Tab">Moves focus to the next focusable element</Property>
+  <Property name="Shift + Tab">
+    Moves focus to the previous focusable element
+  </Property>
+  <Property name="ArrowDown">Moves focus to the next trigger</Property>
+  <Property name="ArrowUp">Moves focus to the previous trigger</Property>
+  <Property name="Home">
+    When focus is on trigger, moves focus to the first trigger
+  </Property>
+  <Property name="End">
+    When focus is on trigger, moves focus to the last trigger
+  </Property>
+</Properties>
+
+## Examples
+
+<Note>Accordion Example use cases go here</Note>

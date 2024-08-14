@@ -1,0 +1,67 @@
+export const metadata = {
+  title: 'Alert',
+  description: 'Alert component',
+}
+
+# Alert
+
+An Alert component displays a brief, important message to the user, gives guidance and notifies users of action results.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/alert
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/alert
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/alert
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/alert
+```
+
+</CodeGroup>
+
+## Usage
+
+The Alert component can be used as follows:
+
+```js
+import { Alert } from '@mojaui/alert'
+
+export function Index() {
+  return (
+    <Alert>
+      <Alert.Icon></Alert.Icon>
+      <Alert.Content>
+        <Alert.Title></Alert.Title>
+        <Alert.Description></Alert.Description>
+      </Alert.Content>
+      <Alert.Close></Alert.Close>
+    </Alert>
+  )
+}
+```
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property
+    name="onStateChange"
+    type="(state: open | close) => void"
+  ></Property>
+  <Property name="[data-state]" type="open | close"></Property>
+</Properties>
+
+## Examples
+
+<Note>Alert Example use cases go here</Note>
