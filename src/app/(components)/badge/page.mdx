@@ -1,0 +1,67 @@
+export const metadata = {
+  title: 'Badge',
+  description: 'Badge component',
+}
+
+# Badge
+
+A Badge is a small count and labeling component used to highlight an status.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/badge
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/badge
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/badge
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/badge
+```
+
+</CodeGroup>
+
+## Variants
+
+In Moja UI, we have 6 types of Badges, which can be defined by the <code>variant</code> prop on the root layer.
+
+- Primary Badge
+- Error Badge
+- Info Badge
+- Success Badge
+- Warning Badge
+- Gray Badge
+
+Additionally, we have 3 shades of this component, which can be defined using the <code>shade</code> prop, passed to the parent component.
+
+- filled-subtle
+- filled-bold
+- outline-bold
+
+## Usage
+
+The Alert component can be used as follows:
+
+```js
+import { Badge } from '@mojaui/badge'
+
+export function Index() {
+  return (
+    <Badge>
+      <Badge.Icon></Badge.Icon>
+    </Badge>
+  )
+}
+```
+
+## Examples
+
+<Note>Badge Example use cases go here</Note>

@@ -9,6 +9,7 @@ import { Header } from '@/components/Header'
 import { Logo } from '@/components/Logo'
 import { Navigation } from '@/components/Navigation'
 import { type Section, SectionProvider } from '@/components/SectionProvider'
+import { HeroPattern } from './HeroPattern'
 
 export function Layout({
   children,
@@ -37,7 +38,11 @@ export function Layout({
           </div>
         </motion.header>
         <div className="relative flex h-full flex-col px-4 pt-14 sm:px-6 lg:px-8">
-          <main className="flex-auto">{children}</main>
+          <main className="flex-auto">
+            <HeroPattern />
+
+            {children}
+          </main>
           <Footer />
         </div>
       </div>

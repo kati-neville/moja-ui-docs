@@ -11,6 +11,7 @@ import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
 import { remToPx } from '@/lib/remToPx'
+import { HeroPattern } from './HeroPattern'
 
 interface NavGroup {
   title: string
@@ -245,8 +246,12 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'Accordion', href: '/accordion' },
       { title: 'Alert', href: '/alert' },
+      { title: 'Avatar', href: '/avatar' },
+      { title: 'Badge', href: '/badge' },
       { title: 'Button', href: '/button' },
       { title: 'Callout', href: '/callout' },
+      { title: 'Checkbox', href: '/checkbox' },
+      { title: 'Radio', href: '/radio' },
       { title: 'Toast', href: '/toast' },
     ],
   },

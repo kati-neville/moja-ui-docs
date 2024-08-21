@@ -1,0 +1,177 @@
+export const metadata = {
+  title: 'Radio',
+  description: 'Radio component',
+}
+
+# Radio
+
+Allows single selection from multiple options.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/radio
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/radio
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/radio
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/radio
+```
+
+</CodeGroup>
+
+## Usage
+
+The Radio component can be used as follows:
+
+```js
+import { Radio } from '@mojaui/radio'
+
+export function Index() {
+  const frameworks = ['React', 'Solid', 'Vue']
+
+  return (
+    <Radio.Root>
+      <Radio.Label>Framework</Radio.Label>
+      {frameworks.map((framework) => (
+        <Radio.Item key={framework} value={framework}>
+          <Radio.ItemIndicator></Radio.ItemIndicator>
+          <Radio.ItemText>{framework}</Radio.ItemText>
+        </Radio.Item>
+      ))}
+    </Radio.Root>
+  )
+}
+```
+
+## Setting the default value
+
+To set a default value for a group of radio buttons, use the <code>defaultValue</code> prop on the root component that wraps the radio buttons. The defaultValue should correspond to the value of the radio button that you want to be selected by default.
+
+<CodeGroup>
+
+```js {{title: 'React' }}
+import { Radio } from '@mojaui/radio'
+
+export function Index() {
+  const frameworks = ['React', 'Solid', 'Vue']
+
+  return (
+    <Radio.Root defaultValue="React">
+      <Radio.Label>Framework</Radio.Label>
+      {frameworks.map((framework) => (
+        <Radio.Item key={framework} value={framework}>
+          <Radio.ItemIndicator></Radio.ItemIndicator>
+          <Radio.ItemText>{framework}</Radio.ItemText>
+        </Radio.Item>
+      ))}
+    </Radio.Root>
+  )
+}
+```
+
+</CodeGroup>
+
+## Listening for changes
+
+When the value of the root component is changed, the <code>onValueChange</code> callback is invoked.
+
+<CodeGroup>
+
+```js {{title: 'React' }}
+import { Radio } from '@mojaui/radio'
+
+export function Index() {
+  const frameworks = ['React', 'Solid', 'Vue']
+
+  return (
+    <Radio.Root onValueChange={(value) => console.log(value)}>
+      {frameworks.map((framework) => (
+        <Radio.Item key={framework} value={framework}>
+          <Radio.ItemIndicator></Radio.ItemIndicator>
+          <Radio.ItemText>{framework}</Radio.ItemText>
+        </Radio.Item>
+      ))}
+    </Radio.Root>
+  )
+}
+```
+
+</CodeGroup>
+
+## API Reference
+
+### Root
+
+<Properties>
+<Property name="defaultValue" type="string">
+Corresponds to the value of the radio button that you want to be selected by default.
+</Property>
+
+<Property name="value" type="string">
+  The value of checked radio
+</Property>
+
+<Property name="disabled" type="boolean">
+  Whether or not the checkbox is disabled.
+</Property>
+
+<Property name="required" type="boolean">
+  Whether or not the checkbox is required.
+</Property>
+
+<Property name="onValueChange" type="(checked: boolean ) => void">
+  The callback invoked when the radio item is checked.
+</Property>
+
+<Property name="[data-hover]">This is present when hovered</Property>
+<Property name="[data-focus]">This is present when focused</Property>
+<Property name="[data-disabled]">This is present when disabled</Property>
+</Properties>
+
+### Item
+
+<Properties>
+
+<Property name="value" type="string"></Property>
+<Property name="disabled" type="boolean">
+  Whether or not the radio is disabled.
+</Property>
+  <Property name="[data-hover]">This is present when hovered</Property>
+  <Property name="[data-focus]">This is present when focused</Property>
+  <Property name="[data-disabled]">This is present when disabled</Property>
+</Properties>
+
+## Accessibility
+
+This component adheres to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio" target="_blank">
+Radio WAI-ARIA design pattern</a>
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Tab">
+    Moves focus to either the checked radio item or the first radio item in the
+    group.
+  </Property>
+  <Property name="Space">Checks an unchecked item when focused.</Property>
+  <Property name="ArrowDown | ArrowRight">
+    Moves focus and checks the next radio item in the group.
+  </Property>
+  <Property name="ArrowUp| ArrowLeft">
+    Moves focus to the previous radio item in the group.
+  </Property>
+</Properties>
+
+## Examples
+
+<Note>Radion Example use cases go here</Note>

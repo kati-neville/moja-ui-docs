@@ -1,0 +1,231 @@
+export const metadata = {
+  title: 'Checkbox',
+  description: 'Checkbox component',
+}
+
+# Checkbox
+
+Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/checkbox
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/checkbox
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/checkbox
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/checkbox
+```
+
+</CodeGroup>
+
+## Usage
+
+The Checkbox component can be used as follows:
+
+```js
+import { Checkbox } from '@mojaui/checkbox'
+
+export function Index() {
+  return (
+    <Checkbox.Root>
+      <Checkbox.Indicator></Checkbox.Indicator>
+      <Checkbox.Label></Checkbox.Label>
+    </Checkbox.Root>
+  )
+}
+```
+
+## Controlled Checkbox
+
+To create a controlled Checkbox component, manage the state of the checked status using the checked prop and update it when the onCheckedChange event handler is called:
+
+<CodeGroup>
+
+```js {{title: 'React' }}
+import { useState } from 'react'
+import { CheckIcon } from 'moja-icons'
+import { Checkbox } from '@mojaui/checkbox'
+
+export const Controlled = () => {
+  const [checked, setChecked] = useState(true)
+
+  return (
+    <Checkbox.Root
+      checked={checked}
+      onCheckedChange={(checkedState) => setChecked(checkedState)}
+    >
+      <Checkbox.Indicator>
+        <CheckIcon />
+      </Checkbox.Indicator>
+      <Checkbox.Label></Checkbox.Label>
+    </Checkbox.Root>
+  )
+}
+```
+
+```js {{title: 'React' }}
+import { CheckIcon } from 'moja-icons'
+import { useState } from 'react'
+import { Checkbox } from '@mojaui/checkbox'
+
+export const Controlled = () => {
+  const [checked, setChecked] = useState(true)
+
+  return (
+    <Checkbox.Root
+      checked={checked}
+      onCheckedChange={(checkedState) => setChecked(checkedState)}
+    >
+      <Checkbox.Indicator></Checkbox.Indicator>
+      <Checkbox.Label></Checkbox.Label>
+    </Checkbox.Root>
+  )
+}
+```
+
+</CodeGroup>
+
+## Indeterminate Checkbox
+
+The indeterminate state represents a state when the checkbox is neither checked nor unchecked. This can be defined by setting the <code>checked</code> prop to <code>indeterminate</code>. A typical usecase would be a 'check all' option in a list of checkboxes.
+
+## Checkbox Group
+
+Moja provides a <code>Checkbox.Group</code> component to manage a group of checkboxes. This component manages the state of the checkboxes and provides a way to access the checked values.
+
+<CodeGroup>
+
+```js {{title: 'React' }}
+import { CheckIcon } from 'moja-icons'
+import { useState } from 'react'
+import { Checkbox } from '@mojaui/checkbox'
+
+const items = [
+  { label: 'React', value: 'react' },
+  { label: 'Solid', value: 'solid' },
+  { label: 'Vue', value: 'vue' },
+]
+
+export const Controlled = () => {
+  return (
+    <Checkbox.Group
+      defaultValue={['react']}
+      name="framework"
+      onValueChange={(checkedItems) => console.log(checkedItems)}
+    >
+      {items.map((item) => (
+        <Checkbox.Root value={item.value} key={item.value}>
+          <Checkbox.Indicator>
+            <CheckIcon />
+          </Checkbox.Indicator>
+          <Checkbox.Label>{item.label}</Checkbox.Label>
+        </Checkbox.Root>
+      ))}
+    </Checkbox.Group>
+  )
+}
+```
+
+</CodeGroup>
+
+## API Reference
+
+### Group
+
+<Properties>
+  <Property name="defaultValue" type="string[]">
+    The initial value of the checkbox group
+  </Property>
+  <Property name="value" type="string[]">
+    The value of the checkbox group
+  </Property>
+  <Property name="disabled" type="boolean">
+    If true, all wrapped checkbox inputs will be disabled
+  </Property>
+  <Property name="name" type="string">
+    The name of the input fields in the checkbox group (Useful for form
+    submission)
+  </Property>
+  <Property name="onValueChange" type="(value: string[]) => void">
+    This callback is called when the value changes
+  </Property>
+</Properties>
+
+### Root
+
+<Properties>
+  <Property name="checked" type="boolean | indeterminate">
+The checked state of the checkbox
+  </Property>
+
+<Property name="defaultChecked" type="boolean | indeterminate">
+  The checked state of the checkbox when it is first rendered.
+</Property>
+
+<Property name="value" type="string">
+  The value of checkbox input. Useful for form submission.
+</Property>
+
+<Property name="disabled" type="boolean">
+  Whether or not the checkbox is disabled.
+</Property>
+
+<Property name="required" type="boolean">
+  Whether or not the checkbox is required.
+</Property>
+
+<Property
+  name="onCheckedChange"
+  type="(checkedState: boolean | indeterminate ) => void"
+>
+  The callback invoked when the checked state changes.
+</Property>
+<Property name="[data-hover]">This is present when hovered</Property>
+<Property name="[data-focus]">This is present when focused</Property>
+<Property name="[data-disabled]">This is present when disabled</Property>
+<Property name="[data-state]"> boolean | indeterminate</Property>
+</Properties>
+
+### Indicator
+
+<Properties>
+  <Property name="[data-hover]">This is present when hovered</Property>
+  <Property name="[data-focus]">This is present when focused</Property>
+  <Property name="[data-disabled]">This is present when disabled</Property>
+  <Property name="[data-state]"> boolean | indeterminate</Property>
+</Properties>
+
+### Label
+
+<Properties>
+  <Property name="[data-hover]">This is present when hovered</Property>
+  <Property name="[data-focus]">This is present when focused</Property>
+  <Property name="[data-disabled]">This is present when disabled</Property>
+  <Property name="[data-state]"> boolean | indeterminate</Property>
+</Properties>
+
+## Accessibility
+
+This component adheres to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox" target="_blank">
+Checkbox WAI-ARIA design pattern</a>
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Space">Toggle the checkbox</Property>
+</Properties>
+
+## Examples
+
+<Note>Checkbox Example use cases go here</Note>
