@@ -1,0 +1,105 @@
+export const metadata = {
+  title: 'Chip',
+  description: 'Chip component',
+}
+
+# Chip
+
+Chips are compact elements that represent an input, attribute, or action.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/chip
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/chip
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/chip
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/chip
+```
+
+</CodeGroup>
+
+## Usage
+
+```js
+import { Chip } from '@mojaui/chip'
+import { CloseIcon } from 'moja-icons'
+
+export function Index() {
+  return (
+    <Chip.Root>
+      <Chip.Label>A</Chip.Label>
+      <Chip.Icon>
+        <CloseIcon />
+      </Chip.Icon>
+    </Chip.Root>
+  )
+}
+```
+
+## Variants
+
+In Moja UI, the Chip component has 2 main variants, which can be defined by the <code>variant</code> prop on the root layer.
+
+- Gray Chip
+- Primary Chip
+
+And 2 types which can be defined by the <code>type</code> prop on the root layer.
+
+- Basic Chip
+- Outlined Chip
+
+```js
+import { Chip } from '@mojaui/chip'
+import { CloseIcon } from 'moja-icons'
+
+export function Index() {
+  return (
+    <Chip.Root variant="primary" type="outline">
+      <Chip.Label>Sample Label</Chip.Label>
+      <Chip.Icon>
+        <CloseIcon />
+      </Chip.Icon>
+    </Chip.Root>
+  )
+}
+```
+
+## API Reference
+
+<Properties>
+  <Property name="variant" type="gray | primary"></Property>
+  <Property name="type" type="basic | outline"></Property>
+  <Property name="disabled" type="boolean"></Property>
+  <Property name="[data-hover]">This is present when hovered</Property>
+  <Property name="[data-disabled]">This is present when disabled</Property>
+  <Property name="[data-selected]">This is present when Selected</Property>{' '}
+</Properties>
+
+## Accessibility
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Tab">
+    Moves focus to either the pressed item or the first item in the group.
+  </Property>
+  <Property name="Space | Enter">Selects/Deselects the item.</Property>
+  <Property name="Shift + Tab">
+    Moves focus to the previous focusable element
+  </Property>
+</Properties>
+
+## Examples
+
+<Note>Chip Example use cases go here</Note>

@@ -1,0 +1,188 @@
+export const metadata = {
+  title: 'Modal',
+  description: 'Modal component',
+}
+
+# Modal
+
+Displays a dialog with custom content that appears on top of the main content.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/modal
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/modal
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/modal
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/modal
+```
+
+</CodeGroup>
+
+## Usage
+
+When the modal opens:
+
+- Focus is trapped within the modal and automatically set to the first focusable element
+- Users cannot interact with the content behind the modal.
+
+```js
+import { Modal } from '@mojaui/modal'
+
+export function Index() {
+  return (
+    <Modal.Root>
+      <Modal.Trigger></Modal.Trigger>
+      <Modal.Backdrop />
+      <Modal.Content>
+        <Modal.CloseTrigger>Close</Modal.CloseTrigger>
+        <Modal.Header></Modal.Header>
+        <Modal.Body></Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal.Content>
+    </Modal.Root>
+  )
+}
+```
+
+## Controlled Modal
+
+To create a controlled Modal component, manage the stateof the modal using the `open` and `onOpenChange` props on the <strong>Root</strong> component.
+
+```js
+import { Modal } from '@mojaui/modal'
+
+export function Index() {
+  const [open, setOpen] = useState(false)
+
+  const handleOpenModal = () => setOpen(true)
+
+  return (
+    <>
+      <button type="button" onClick={handleOpenModal}>
+        Open Modal
+      </button>
+      <Modal.Root open={open} onOpenChange={(state) => setOpen(!state)}>
+        <Modal.Trigger></Modal.Trigger>
+        <Modal.Backdrop />
+        <Modal.Content>
+          <Modal.CloseTrigger>Close</Modal.CloseTrigger>
+          <Modal.Header></Modal.Header>
+          <Modal.Body></Modal.Body>
+          <Modal.Footer></Modal.Footer>
+        </Modal.Content>
+      </Modal.Root>
+    </>
+  )
+}
+```
+
+## Lazy Mounting
+
+Lazy mounting is a performance optimization feature that delays rendering the content of a modal until it is opened for the first time. This is especially useful when the modal content is large and complex. You can enable this feature by passing the `lazy` prop on the `Root` component.
+
+The `unmountOnExit` prop allows the modal content to be removed from the DOM when the modal is closed, helping to free up resources and improve performance.
+
+```js
+import { Modal } from '@mojaui/modal'
+
+export function Index() {
+  return (
+    <Modal.Root lazy unmountOnExit>
+      <Modal.Trigger>Open Modal</Modal.Trigger>
+      <Modal.Backdrop />
+      <Modal.Content>
+        <Modal.CloseTrigger>Close</Modal.CloseTrigger>
+        <Modal.Header></Modal.Header>
+        <Modal.Body></Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal.Content>
+    </Modal.Root>
+  )
+}
+```
+
+## Using render props
+
+The Modal component exposes information about its current state via render props that you can use to conditionally apply different style or render different content.
+
+```js
+import { Modal } from '@mojaui/modal'
+
+export function Index() {
+  return (
+    <Modal.Root>
+      <Modal.Trigger>Open Modal</Modal.Trigger>
+      <Modal.Backdrop />
+      <Modal.Content>
+        {(details) => {
+          return (
+            <>
+              <Modal.CloseTrigger>Close</Modal.CloseTrigger>
+              <Modal.Header></Modal.Header>
+              <Modal.Body>
+                The modal is {details.open ? 'Open' : 'Closed'}
+              </Modal.Body>
+              <Modal.Footer></Modal.Footer>
+            </>
+          )
+        }}
+      </Modal.Content>
+    </Modal.Root>
+  )
+}
+```
+
+## API Reference
+
+<Properties>
+  <Property name="open" type="boolean">
+    Whether the modal is open
+  </Property>
+  <Property name="onOpenChange" type="(details: OpenChangeDetails) => void">
+    A Callback that is called everytime the modal is opened or closed
+  </Property>
+  <Property name="preventScroll" type="boolean">
+    Whether to prevent scrolling behind the modal when it is opened
+  </Property>
+  <Property name="closeOnOutsideClick" type="boolean">
+    Whether to close the modal when clicked outside
+  </Property>
+  <Property name="closeOnEsc" type="boolean">
+    Whether to close the modal when the escape key is pressed
+  </Property>
+  <Property name="[data-state]">"open" | "closed"</Property>
+</Properties>
+
+## Accessibility
+
+This component adheres to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal" target="_blank"> Dialog WAI-ARIA design pattern.</a>
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Enter">When focus is on trigger, it opens the modal</Property>
+  <Property name="Tab">
+    Moves focus to the next focusable element. Focus is trapped within the modal
+  </Property>
+  <Property name="Shift + Tab">
+    Moves focus to the previous focusable element
+  </Property>
+  <Property name="Esc">
+    Closes the modal and moves focus to the trigger
+  </Property>
+</Properties>
+
+## Examples
+
+<Note>Modal Example use cases go here</Note>

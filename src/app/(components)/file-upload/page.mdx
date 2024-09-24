@@ -1,0 +1,191 @@
+export const metadata = {
+  title: 'File Upload',
+  description: 'File Upload component',
+}
+
+# File Upload
+
+A component used to upload file-upload.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/file-upload
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/file-upload
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/file-upload
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/file-upload
+```
+
+</CodeGroup>
+
+## Usage
+
+The File upload component can be used as follows:
+
+```js
+import { FileUpload } from '@mojaui/file-upload'
+
+export function Index() {
+  return (
+    <FileUpload.Root>
+      <FileUpload.Label>File Upload</FileUpload.Label>
+      <FileUpload.Dropzone>Drag your file(s) here</FileUpload.Dropzone>
+      <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
+    </FileUpload.Root>
+  )
+}
+```
+
+## Orientation
+
+The file upload component can be oriented vertically or horizontally. This can be controlled via the <b>`orientation`</b> prop on the `Root` component.
+
+```js
+import { FileUpload } from '@mojaui/file-upload'
+
+export function Index() {
+  return (
+    <FileUpload.Root orientation="vertical">
+      <FileUpload.Label>File Upload</FileUpload.Label>
+      <FileUpload.Dropzone>Drag your file(s) here</FileUpload.Dropzone>
+      <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
+    </FileUpload.Root>
+  )
+}
+```
+
+## Preview Uploaded files
+
+The files provided can be accessed as a render prop value passed through the `Items` component.
+
+```js
+import { FileUpload } from '@mojaui/file-upload'
+import { FileIcon } from 'moja-icons'
+
+export function Index() {
+  return (
+    <FileUpload.Root orientation="vertical">
+      <FileUpload.Label>File Upload</FileUpload.Label>
+      <FileUpload.Dropzone>Drag your file(s) here</FileUpload.Dropzone>
+      <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
+      <FileUpload.Items>
+        {({ files }) =>
+          files.map((file) => (
+            <FileUpload.Item key={file.name} file={file}>
+              <FileUpload.ItemPreview type="image/*">
+                {file.type.startsWith('image/') ? (
+                  <FileUpload.ItemPreviewImage />
+                ) : (
+                  <FileIcon />
+                )}
+              </FileUpload.ItemPreview>
+              <FileUpload.ItemName />
+              <FileUpload.ItemSizeText />
+              <FileUpload.Progress />
+              <FileUpload.Status onStatusChange={() => {}} idleComp={<></>} />
+              <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
+            </FileUpload.Item>
+          ))
+        }
+      </FileUpload.Items>
+    </FileUpload.Root>
+  )
+}
+```
+
+## Progress
+
+The `Progress` component is useful when submitting files to a server, as it displays the progress of the file upload. It is an extension of the [Progress bar](/progress-bar) component.
+
+## Status
+
+The `Status` component displays the current state of the upload, which can be one of the following:<b>idle</b>, <b>Uploading</b>, <b>Success</b> or <b>Failed</b>.
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property
+    name="orientation"
+    type="veritical | horizontal"
+    defaultValue="vertical"
+  >
+    Controls the orientation of the file upload component.
+  </Property>
+  <Property
+    name="accept"
+    type="Record<string, string[]> | FileMimeType | FileMimeType[]"
+  >
+    The acceptable file types.
+  </Property>
+  <Property name="maxFiles" type="number" defaultValue="1">
+    Maximum number of files.
+  </Property>
+  <Property name="maxFileSize" type="number">
+    Maximum file size in bytes.
+  </Property>
+  <Property name="minFileSize" type="number" defaultValue="0">
+    Minimum file size in bytes.
+  </Property>
+  <Property name="onFilesChange" type="(files: FileChangeDetails) => void">
+    Function called when the value changes
+  </Property>
+  <Property name="[data-disabled]">Present when disabled</Property>
+</Properties>
+
+### Trigger
+
+<Properties>
+  <Property name="[data-disabled]">Present when disabled</Property>
+</Properties>
+
+### Item
+
+<Properties>
+  <Property name="file" type="File"></Property>
+  <Property name="onFileChange" type="(file: FileChangeDetails) => void">
+    Function called when the value changes, whether accepted or rejected.
+  </Property>
+</Properties>
+
+### Status
+
+<Properties>
+  <Property
+    name="onStatusChange"
+    type="(status: 'idle' | 'uploading' | 'success' | 'failed') => void"
+  >
+    Function called when the status changes
+  </Property>
+  <Property name="renderIdle" type="ReactNode">
+    Component to be displayed when in an <strong>idle</strong> state
+  </Property>
+  <Property name="renderUploading" type="ReactNode">
+    Component to be displayed when in an <strong>uploading</strong> state
+  </Property>
+  <Property
+    name="renderSuccess"
+    type="(response: ResponseDetails) => ReactNode"
+  >
+    Component to be displayed when in an <strong>success</strong> state
+  </Property>
+  <Property name="renderFailed" type="(response: ResponseDetails) => ReactNode">
+    Component to be displayed when in an <strong>failed</strong> state
+  </Property>
+</Properties>
+
+## Examples
+
+<Note>File Upload Example use cases go here</Note>

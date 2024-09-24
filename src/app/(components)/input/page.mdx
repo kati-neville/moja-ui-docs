@@ -1,0 +1,149 @@
+export const metadata = {
+  title: 'Text Input',
+  description: 'Text input component',
+}
+
+# Text Input
+
+This component is used to get user inputs in forms, search fields, and more
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/input
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/input
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/input
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/input
+```
+
+</CodeGroup>
+
+## Usage
+
+The Input component can be used as follows:
+
+```js
+import { Input } from '@mojaui/input'
+
+export function Index() {
+  return (
+    <Input.Root>
+      <Input.Label></Input.Label>
+      <Input />
+      <Input.LeftElement></Input.LeftElement>
+      <Input.RightElement></Input.RightElement>
+    </Input.Root>
+  )
+}
+```
+
+## With Error Message
+
+You can combine the `isInvalid` prop on the <b>`Root`</b> component and <b>`ErrorText`</b> to display the error message
+
+```js
+import { Input } from '@mojaui/input'
+
+export function Index() {
+  return (
+    <Input.Root isInvalid={true}>
+      <Input.Label></Input.Label>
+      <Input />
+      <Input.ErrorText></Input.ErrorText>
+    </Input.Root>
+  )
+}
+```
+
+## Left and Right Addons
+
+You can add addons to the left and right of the <b>`Input`</b> component.
+
+```js
+import { Input } from '@mojaui/input'
+
+export function Index() {
+  return (
+    <Input.Root>
+      <Input.Label></Input.Label>
+      <Input />
+      <Input.LeftAddon></Input.LeftAddon>
+      <Input.RightAddon></Input.RightAddon>
+    </Input.Root>
+  )
+}
+```
+
+## Controlled inputs
+
+```js
+import { Input } from '@mojaui/input'
+
+export function Index() {
+  const [value, setValue] = React.useState('')
+
+  const handleValueChange = (event) => setValue(event.target.value)
+
+  return (
+    <Input.Root>
+      <Input.Label>Email</Input.Label>
+      <Input value={value} onChange={handleValueChange} />
+    </Input.Root>
+  )
+}
+```
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property name="isInvalid" type="boolean">
+    Whether or not the input is invalid.
+  </Property>
+  <Property name="disabled" type="boolean">
+    Whether or not the input is disabled.
+  </Property>
+  <Property name="required" type="boolean">
+    Whether or not the input field is required.
+  </Property>
+  <Property name="readonly" type="boolean">
+    Whether or not the input is readonly.
+  </Property>
+  <Property name="[data-disabled]">
+    This is present when the input is disabled
+  </Property>
+  <Property name="[data-hover]">
+    This is present when the input is hovered.
+  </Property>
+  <Property name="[data-focus]">
+    This is present when the input is focused.
+  </Property>
+</Properties>
+
+### Input
+
+The input component forwards all the props/attributes from the base <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes" target="_blank">HTML input element</a>.
+
+## Accessibility
+
+- Built with a native `<input />` element.
+- Visual and ARIA labeling support.
+- Change, clipboard, composition, selection, and input event support.
+- Required and invalid states exposed to assistive technology via ARIA.
+- Support for description and error message help text linked to the input via ARIA.
+
+## Examples
+
+<Note>Input Example use cases go here</Note>

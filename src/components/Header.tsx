@@ -11,6 +11,7 @@ import {
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
 import { MobileSearch, Search } from '@/components/Search'
 import { ThemeToggle } from '@/components/ThemeToggle'
+import { Github } from './icons/github'
 
 export const Header = forwardRef<
   React.ElementRef<'div'>,
@@ -61,6 +62,9 @@ export const Header = forwardRef<
         <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
         <div className="flex gap-4">
           <MobileSearch />
+
+          <Github />
+
           <ThemeToggle />
         </div>
       </div>

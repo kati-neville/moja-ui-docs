@@ -1,0 +1,147 @@
+export const metadata = {
+  title: 'Button Group',
+  description: 'Button Group component',
+}
+
+# Button Group
+
+The Button Group component can be used to group related buttons or buttons whose actions are related to each other.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/button-group
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/button-group
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/button-group
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/button-group
+```
+
+</CodeGroup>
+
+## Usage
+
+The Button Group component can be used as follows:
+
+```js
+import { ButtonGroup } from '@mojaui/button-group'
+
+export function Index() {
+  return (
+    <ButtonGroup.Root>
+      <ButtonGroup.Item value="A">A</ButtonGroup.Item>
+      <ButtonGroup.Item value="B">B</ButtonGroup.Item>
+      <ButtonGroup.Item value="C">C</ButtonGroup.Item>
+    </ButtonGroup.Root>
+  )
+}
+```
+
+## Multiple Selection
+
+Use the <code>multiple</code> prop to enable multiple selection within the group
+
+```js
+import { ButtonGroup } from '@mojaui/button-group'
+
+export function Index() {
+  return (
+    <ButtonGroup.Root multiple>
+      <ButtonGroup.Item value="A">A</ButtonGroup.Item>
+      <ButtonGroup.Item value="B">B</ButtonGroup.Item>
+      <ButtonGroup.Item value="C">C</ButtonGroup.Item>
+    </ButtonGroup.Root>
+  )
+}
+```
+
+## Default value
+
+Use the <code>defaultValue</code> prop to define the default selected buttons in the group.
+
+```js
+import { ButtonGroup } from '@mojaui/button-group'
+
+export function Index() {
+  return (
+    <ButtonGroup.Root defaultValue={['A']}>
+      <ButtonGroup.Item value="A">A</ButtonGroup.Item>
+      <ButtonGroup.Item value="B">B</ButtonGroup.Item>
+      <ButtonGroup.Item value="C">C</ButtonGroup.Item>
+    </ButtonGroup.Root>
+  )
+}
+```
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property name="multiple" type="boolean">
+    Whether to allow multiple buttons in the group to be selected.
+  </Property>
+  <Property name="defaultValue" type="string[]">
+    The initial value of the toggle group when it is first rendered. Use when
+    you do not need to control the state of the button group.
+  </Property>
+  <Property name="value" type="string[]">
+    The values of the selected buttons in the group
+  </Property>
+  <Property name="onValueChange" type="(details: string[]) => void">
+    Callback function called when a button in the group in clicked
+  </Property>
+  <Property name="disabled" type="boolean">
+    Whether the toggle is disabled.
+  </Property>
+  <Property name="[data-active]">This is present when active</Property>
+  <Property name="[data-focus]">This is present when focused</Property>
+  <Property name="[data-hover]">This is present when hovered</Property>{' '}
+  <Property name="[data-disabled]">This is present when disabled</Property>
+</Properties>
+
+### Item
+
+<Properties>
+  <Property name="disabled" type="boolean"></Property>
+  <Property name="[data-active]">This is present when active</Property>
+  <Property name="[data-focus]">This is present when focused</Property>
+  <Property name="[data-hover]">This is present when hovered</Property>{' '}
+  <Property name="[data-disabled]">This is present when disabled</Property>
+</Properties>
+
+## Accessibility
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Tab">
+    Moves focus to either the pressed item or the first item in the group.
+  </Property>
+  <Property name="Space | Enter">Activates/deactivates the item.</Property>
+  <Property name="Shift + Tab">
+    Moves focus to the previous focusable element
+  </Property>
+  <Property name="ArrowDown">
+    Moves focus to the next button in the group
+  </Property>
+  <Property name="ArrowUp">
+    Moves focus to the previous button in the group
+  </Property>
+  <Property name="Home">Moves focus to the first button in the group</Property>
+  <Property name="End">Moves focus to the last button in the group</Property>
+</Properties>
+
+## Examples
+
+<Note>Button Group Example use cases go here</Note>

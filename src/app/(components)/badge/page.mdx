@@ -52,11 +52,14 @@ The Alert component can be used as follows:
 
 ```js
 import { Badge } from '@mojaui/badge'
+import { CloseIcon } from 'moja-icons'
 
 export function Index() {
   return (
     <Badge>
-      <Badge.Icon></Badge.Icon>
+      <Badge.Icon>
+        <CloseIcon />
+      </Badge.Icon>
     </Badge>
   )
 }

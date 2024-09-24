@@ -42,7 +42,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
 
         // Base
         color: 'var(--tw-prose-body)',
-        fontSize: theme('fontSize.sm')[0],
+        fontSize: theme('fontSize.base')[0],
         lineHeight: theme('lineHeight.7'),
 
         // Text
@@ -298,7 +298,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
           paddingLeft: theme('padding[1.5]'),
           boxShadow: 'inset 0 0 0 1px var(--tw-prose-code-ring)',
           backgroundColor: 'var(--tw-prose-code-bg)',
-          fontSize: theme('fontSize.2xs'),
+          fontSize: theme('fontSize.xs'),
         },
         ':is(a, h1, h2, h3, blockquote, thead th) code': {
           color: 'inherit',
@@ -308,7 +308,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
           fontWeight: 'inherit',
         },
         'h3 code': {
-          fontSize: theme('fontSize.sm')[0],
+          fontSize: theme('fontSize.xs')[0],
           fontWeight: 'inherit',
         },
 

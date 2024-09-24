@@ -1,0 +1,75 @@
+export const metadata = {
+  title: 'Overlay',
+  description: 'Overlay component',
+}
+
+# Overlay
+
+An overlay is a temporary, semi-transparent layer that covers the page content, directing the user's attention to a newly introduced element or section, such as a modal or drawer.
+
+Overlays can include a blur effect to obscure the page content behind the focused element, enhancing the user's attention on the new content. Implementing blurred overlays depends on browser compatibility and support
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/overlay
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/overlay
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/overlay
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/overlay
+```
+
+</CodeGroup>
+
+## Usage
+
+```js
+import { Overlay } from '@mojaui/overlay'
+
+export function Index() {
+  return <Overlay>{children}</Overlay>
+}
+```
+
+## API Reference
+
+<Properties>
+  <Property name="visible" type="boolean">
+    This controls whether or not the overlay should be displayed or hidden.
+  </Property>
+  <Property name="onVisibleChange" type="(visible: boolean) => void">
+    A Callback that is called everytime the visible state changes.
+  </Property>
+  <Property name="scrollable" type="boolean" defaultValue="false">
+    Whether or not the background content of the overlay should be scrollable.
+  </Property>
+  <Property name="cover" type="parent | full" defaultValue="full">
+    "By default, the overlay covers the entire page. When set to 'parent', it
+    will only cover the parent container."
+  </Property>
+</Properties>
+
+## Accessibility
+
+- Follows recommended focus behavior for modal interactions.
+- User interaction with the background content is blocked until the overlay is dismissed.
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Esc">Closes the overlay.</Property>
+</Properties>
+
+## Examples
+
+<Note>Overlay Example use cases go here</Note>

@@ -97,10 +97,12 @@ export function Property({
   name,
   children,
   type,
+  defaultValue,
 }: {
   name: string
   children: React.ReactNode
   type?: string
+  defaultValue?: string
 }) {
   return (
     <li className="m-0 px-0 py-4 first:pt-0 last:pb-0">
@@ -118,10 +120,20 @@ export function Property({
             </dd>
           </>
         )}
+
         <dt className="sr-only">Description</dt>
         <dd className="w-full flex-none [&>:first-child]:mt-0 [&>:last-child]:mb-0">
           {children}
         </dd>
+
+        {defaultValue && (
+          <>
+            <dt className="sr-only">Default Value</dt>
+            <dd className="font-mono text-xs text-zinc-400 dark:text-zinc-500">
+              {defaultValue}
+            </dd>
+          </>
+        )}
       </dl>
     </li>
   )

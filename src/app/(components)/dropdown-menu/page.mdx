@@ -1,0 +1,201 @@
+export const metadata = {
+  title: 'Dropdown',
+  description: 'Dropdown component',
+}
+
+# Dropdown
+
+A list of options or actions that appear after the user interacts with a button, allowing them to make a choice or take further actions.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/dropdown
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/dropdown
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/dropdown
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/dropdown
+```
+
+</CodeGroup>
+
+## Usage
+
+The Dropdown component can be used as follows:
+
+```js
+import { Dropdown } from '@mojaui/dropdown'
+
+export function Index() {
+  return (
+    <Dropdown.Root>
+      <Dropdown.Trigger></Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item></Dropdown.Item>
+        <Dropdown.Item></Dropdown.Item>
+        <Dropdown.Item></Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown.Root>
+  )
+}
+```
+
+## Separating Items
+
+To separate items in a dropdown, render the `Separator` component.
+
+```js
+import { Dropdown } from '@mojaui/dropdown'
+
+export function Index() {
+  return (
+    <Dropdown.Root>
+      <Dropdown.Trigger></Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item></Dropdown.Item>
+        <Dropdown.Item></Dropdown.Item>
+        <Dropdown.Separator></Dropdown.Separator>
+        <Dropdown.Item></Dropdown.Item>
+        <Dropdown.Item></Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown.Root>
+  )
+}
+```
+
+## Grouping Items
+
+You can use the `GroupItem` component to group dropdown items.
+
+```js
+import { Dropdown } from '@mojaui/dropdown'
+
+export function Index() {
+  return (
+    <Dropdown.Root>
+      <Dropdown.Trigger></Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.GroupItem>
+          <Dropdown.GroupItemLabel></Dropdown.GroupItemLabel>
+          <Dropdown.Item></Dropdown.Item>
+          <Dropdown.Item></Dropdown.Item>
+        </Dropdown.GroupItem>
+        <Dropdown.GroupItem>
+          <Dropdown.GroupItemLabel></Dropdown.GroupItemLabel>
+          <Dropdown.Item></Dropdown.Item>
+          <Dropdown.Item></Dropdown.Item>
+        </Dropdown.GroupItem>
+      </Dropdown.Content>
+    </Dropdown.Root>
+  )
+}
+```
+
+## Nested Dropdown Items
+
+To show a nested dropdown Item, render another `Dropdown` component and use the `TriggerItem` component to open a nested dropdown.
+
+```js
+import { Dropdown } from '@mojaui/dropdown'
+
+export function Index() {
+  return (
+    <Dropdown.Root>
+      <Dropdown.Trigger></Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item></Dropdown.Item>
+        <Dropdown.Root>
+          <Dropdown.TriggerItem></Dropdown.TriggerItem>
+          <Dropdown.Content>
+            <Dropdown.Item></Dropdown.Item>
+          </Dropdown.Content>
+        </Dropdown.Root>
+      </Dropdown.Content>
+    </Dropdown.Root>
+  )
+}
+```
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property name="aria-label" type="string">
+    The accessibility label for the dropdown
+  </Property>
+  <Property name="focusedValue" type="string">
+    The value of the focused dropdown item
+  </Property>
+  <Property name="closeOnSelect" type="boolean" defaultValue={true}>
+    Whether to close the dropdown when an option is selected
+  </Property>
+  <Property name="loopfocus" type="boolean">
+    Whether to loop the keyboard navigation
+  </Property>
+  <Property name="open" type="boolean">
+    Whether the dropdown is open
+  </Property>
+  <Property name="position" type="PositionOptions">
+    Options used to dynamically position the dropdown
+  </Property>
+  <Property name="onSelect" type="(details: OptionDetails) => void">
+    Function called when a dropdown item is selected
+  </Property>
+  <Property name="open" type="(details: OpenChangeDetails) => void">
+    Function called when the dropdown item is selected
+  </Property>
+</Properties>
+
+### Item
+
+<Properties>
+  <Property name="value" type="string">
+    The unique value of the dropdown option
+  </Property>
+  <Property name="disabled" type="boolean">
+    Whether the dropdown item is disabled
+  </Property>
+  <Property name="closeOnSelect" type="boolean" defaultValue={true}>
+    Whether to close the dropdown when the option is selected
+  </Property>
+  <Property name="[data-disabled]" type="boolean">
+    Present when disabled
+  </Property>
+  <Property name="[data-focused]" type="boolean">
+    Present when focused
+  </Property>
+</Properties>
+
+## Accessibility
+
+This component adheres to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/menubar" target="_blank"> menu WAI-ARIA design pattern.</a>
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Space | Enter">Activates/Selects the focused item</Property>
+  <Property name="ArrowDown">
+    Moves focus to the next item in the dropdown
+  </Property>
+  <Property name="ArrowUp">
+    Moves focus to the previous item in the dropdown
+  </Property>
+  <Property name="Esc">
+    Closes the dropdown and moves focus to the trigger
+  </Property>
+</Properties>
+
+## Examples
+
+<Note>Dropdown Example use cases go here</Note>

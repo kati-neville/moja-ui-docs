@@ -1,0 +1,79 @@
+export const metadata = {
+  title: 'Text',
+  description: 'Text Component',
+}
+
+# Text
+
+To display text in a variety of sizes and weights.
+
+## Usage
+
+The Text component can be used as follows:
+
+```js
+import { Text } from '@mojaui/react'
+
+export function Index() {
+  return <Text />
+}
+```
+
+### As another element
+
+By default the Heading component renders as a `p`. You can use the `as` prop to specify the HTML tag.
+
+```js
+import { Text } from '@mojaui/react'
+
+export function Index() {
+  return (
+    <>
+      <Text as="span">This is a span text</Text>
+      <Heading as="label">This is a label text</Heading>
+    </>
+  )
+}
+```
+
+### Font Size
+
+You can utilize the `size` prop to set the font size, which also adjusts the line height accordingly for a consistent typographic appearance.
+
+<Note>
+  You can also provide custom styles for the component using standard CSS
+  classes
+</Note>
+
+```js
+import { Text } from '@mojaui/react'
+
+export function Index() {
+  return (
+    <>
+      <Text size="2xl">This is text of size 2xl</Text>
+    </>
+  )
+}
+```
+
+### Font Weight
+
+You can utilize the `fontWeight` prop to set the font weight.
+
+<Note>
+  You can also provide custom styles for the component using standard CSS
+  classes
+</Note>
+
+```js
+import { Text } from '@mojaui/react'
+
+export function Index() {
+  return (
+    <>
+      <Text fontWeight="light">This is text of light font-weight</Text>
+    </>
+  )
+}
+```

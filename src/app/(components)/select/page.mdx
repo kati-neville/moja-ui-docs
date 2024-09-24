@@ -1,0 +1,181 @@
+export const metadata = {
+  title: 'Select',
+  description: 'Select component',
+}
+
+# Select
+
+The Select component displays a list of options for the user to pick from.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/select
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/select
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/select
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/select
+```
+
+</CodeGroup>
+
+## Usage
+
+The Select component can be used as follows:
+
+```js
+import { Select } from '@mojaui/select'
+import { ChevronDownIcon } from 'moja-icons'
+
+export function Index() {
+
+  type Item = { label: string; value: string; disabled?: boolean }
+  const items: Item[] = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+  ]
+
+  return (
+    <Select.Root>
+      <Select.Label>Frameworks</Select.Label>
+      <Select.Trigger>
+        <Select.ValueText placeholder="Select a Framework" />
+        <Select.Indicator>
+          <ChevronDownIcon />
+        </Select.Indicator>
+      </Select.Trigger>
+      <Select.Content>
+     {items.map((item)=> {
+      return <Select.Item key={item.value} value={item}>
+              <Select.ItemText>{item.label}</Select.ItemText>
+              <Select.ItemIndicator>✓</Select.ItemIndicator>
+             </Select.Item>
+     })}
+      </Select.Content>
+    </Select.Root>
+  )
+}
+
+```
+
+## Multiple Selection
+
+To enable <code>multiple</code> item selection:
+
+```js
+import { Select } from '@mojaui/select'
+
+export function Index() {
+  return (
+    <Select.Root multiple>
+      <Select.Label>Frameworks</Select.Label>
+      ...
+    </Select.Root>
+  )
+}
+```
+
+## API Reference
+
+### Root
+
+<Properties>
+  <Property name="value" type="string | string[]">
+    The value(s) of the selected options.
+  </Property>
+  <Property name="multiple" type="boolean">
+    Whether to allow multiple selection.
+  </Property>
+
+{' '}
+
+<Property name="disabled" type="boolean">
+  Whether or not the select is disabled.
+</Property>
+<Property name="onValueChange" type="(value: string | string[]) => void">
+  Callback function that is invoked when the selected value(s) change
+</Property>
+<Property name="error" type="string">
+This is triggered when there is some form of error state.
+</Property>
+<Property name="name" type="string">
+  The 'name' attribute of the underlying select.
+</Property>
+<Property name="required" type="boolean">
+  Whether or not the select is required.
+</Property>
+<Property name="[data-disabled]">
+  This is present when the select is disabled
+</Property>
+<Property name="[data-hover]">
+  This is present when the option is hovered.
+</Property>
+<Property name="[data-focus]">
+  This is present when the option is focused.
+</Property>
+</Properties>
+
+### Item
+
+<Properties>
+  <Property name="value" type="string">
+    The value of the selected option.
+  </Property>
+  <Property name="disabled" type="boolean">
+    Whether or nor the option should be disabled
+  </Property>
+
+    <Property name="[data-disabled]">
+    This is present when the option is disabled
+
+  </Property>
+
+    <Property name="[data-hover]">
+    This is present when the option is hovered.
+
+  </Property>
+      <Property name="[data-selected]">
+    This is present when the option is selected.
+  </Property>
+
+</Properties>
+
+## Accessibility
+
+This component adheres to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/" target="_blank">
+WAI-ARIA design pattern for listbox </a>
+
+### Keyboard Support
+
+<Properties>
+  <Property name="Space | Enter">
+    When focus is on trigger, opens the select and focuses the first selected
+    item. When focus is on the content, selects the highlighted item.
+  </Property>
+  <Property name="ArrowDown">
+    When focus is on trigger, opens the select. When focus is on content, moves
+    focus to the next item.
+  </Property>
+  <Property name="ArrowUp">
+    When focus is on trigger, opens the select. When focus is on content, moves
+    focus to the previous item.
+  </Property>{' '}
+  <Property name="Esc">Closes the select and moves focus to trigger.</Property>
+  <Property name="A-Z | a-z">When focus is on trigger, selects the item whose label starts with the typed character.
+When focus is on the listbox, moves focus to the next item with a label that starts with the typed character.</Property>
+
+</Properties>
+
+## Examples
+
+<Note>Select Example use cases go here</Note>

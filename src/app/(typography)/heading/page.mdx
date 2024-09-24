@@ -1,0 +1,61 @@
+export const metadata = {
+  title: 'Heading',
+  description: 'Heading Component',
+}
+
+# Heading
+
+A component for headings and subheadings.
+
+## Usage
+
+The Heading component can be used as follows:
+
+```js
+import { Heading } from '@mojaui/react'
+
+export function Index() {
+  return <Heading />
+}
+```
+
+### As another element
+
+By default the Heading component renders as a `h1`. You can use the `as` prop to specify the HTML tag.
+
+```js
+import { Heading } from '@mojaui/react'
+
+export function Index() {
+  return (
+    <>
+      <Heading as="h2">Heading 2</Heading>
+      <Heading as="h3">Heading 3</Heading>
+      <Heading as="h4">Heading 4</Heading>
+    </>
+  )
+}
+```
+
+### Font Size
+
+You can utilize the size prop to set the font size, which also adjusts the line height accordingly for a consistent typographic appearance.
+
+<Note>
+  You can also provide custom styles for the component using standard CSS
+  classes
+</Note>
+
+```js
+import { Heading } from '@mojaui/react'
+
+export function Index() {
+  return (
+    <>
+      <Heading as="h2" size="2xl">
+        Heading 2
+      </Heading>
+    </>
+  )
+}
+```

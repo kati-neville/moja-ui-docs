@@ -1,0 +1,316 @@
+export const metadata = {
+  title: 'Tabs',
+  description: 'Tabs component',
+}
+
+# Tabs
+
+Tabs organize content into distinct sections, enabling users to navigate between them seemlessly.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/tabs
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/tabs
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/tabs
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/tabs
+```
+
+</CodeGroup>
+
+## Usage
+
+The Tabs component can be used as follows:
+
+```js
+import { Tabs } from '@mojaui/tabs'
+
+export function Index() {
+  return (
+    <Tabs.Root>
+      <Tabs.List>
+        <Tab.Trigger value="photo">Photo</Tab.Trigger>
+        <Tab.Trigger value="video">Video</Tab.Trigger>
+        <Tab.Trigger value="music">Music</Tab.Trigger>
+      </Tabs.List>
+      <Tabs.Panels>
+        <Tab.Panel value="photo">Content on Photo</Tab.Panel>
+        <Tab.Panel value="video">Content on Video</Tab.Panel>
+        <Tab.Panel value="music">Content on Music</Tab.Panel>
+      </Tabs.Panels>
+    </Tabs.Root>
+  )
+}
+```
+
+## Variants
+
+In Moja UI, the `Trigger` component has 3 main variants, which can be defined by the <code>variant</code> prop on the root layer or on each Trigger item.
+
+- Primary Tab
+- Pill Tab
+- Outline Tab
+
+```js
+import { Tabs } from '@mojaui/tabs'
+
+export function Index() {
+  return (
+    <Tabs.Root initialTab={'photo'}>
+      <Tabs.List>
+        <Tab.Trigger variant="primary" value="photo">
+          Photo
+        </Tab.Trigger>
+        <Tab.Trigger value="video">Video</Tab.Trigger>
+        <Tab.Trigger value="music">Music</Tab.Trigger>
+      </Tabs.List>
+      ...
+    </Tabs.Root>
+  )
+}
+```
+
+## Initial Tab
+
+To set a default Tab on initial render, use the `initialTab` prop on the `Root` component.
+
+```js
+import { Tabs } from '@mojaui/Tabs'
+
+export function Index() {
+  return (
+    <Tabs.Root initialTab={'photo'}>
+      <Tabs.List>
+        <Tab.Trigger value="photo">Photo</Tab.Trigger>
+        <Tab.Trigger value="video">Video</Tab.Trigger>
+        <Tab.Trigger value="music">Music</Tab.Trigger>
+      </Tabs.List>
+      <Tabs.Panels>
+        <Tab.Panel value="photo">Content on Photo</Tab.Panel>
+        <Tab.Panel value="video">Content on Video</Tab.Panel>
+        <Tab.Panel value="music">Content on Music</Tab.Panel>
+      </Tabs.Panels>
+    </Tabs.Root>
+  )
+}
+```
+
+## Lazy Mounting
+
+Lazy mounting is a performance optimization feature that delays rendering the content of a tab until it is activated for the first time. This is especially useful when the tab content is large and complex. You can enable this feature by passing the `lazy` prop on the `Root` component.
+
+The `unmountOnExit` prop allows the tab content to be removed from the DOM when the tab is deactivated, helping to free up resources and improve performance.
+
+```js
+import { Tabs } from '@mojaui/Tabs'
+
+export function Index() {
+  return (
+    <Tabs.Root lazy unmountOnExit>
+      <Tabs.List>
+        <Tab.Trigger value="photo">Photo</Tab.Trigger>
+        <Tab.Trigger value="video">Video</Tab.Trigger>
+        <Tab.Trigger value="music">Music</Tab.Trigger>
+      </Tabs.List>
+      <Tabs.Panels>
+        <Tab.Panel value="photo">Content on Photo</Tab.Panel>
+        <Tab.Panel value="video">Content on Video</Tab.Panel>
+        <Tab.Panel value="music">Content on Music</Tab.Panel>
+      </Tabs.Panels>
+    </Tabs.Root>
+  )
+}
+```
+
+## Disabled Tab
+
+To disable a tab, simply pass the `disabled` prop to the `Trigger` component.
+
+```js
+import { Tabs } from '@mojaui/Tabs'
+
+export function Index() {
+  return (
+    <Tabs.Root lazy unmountOnExit>
+      <Tabs.List>
+        <Tab.Trigger value="video" disabled>
+          Video
+        </Tab.Trigger>
+        <Tab.Trigger value="music">Music</Tab.Trigger>
+      </Tabs.List>
+      <Tabs.Panels>
+        <Tab.Panel value="video">Content on Video</Tab.Panel>
+        <Tab.Panel value="music">Content on Music</Tab.Panel>
+      </Tabs.Panels>
+    </Tabs.Root>
+  )
+}
+```
+
+## Controlled Tabs
+
+To create a controlled Tabs component, you can use the `value` and the `onValueChange` props on the Root component.
+
+```js
+import { Tabs } from '@mojaui/Tabs'
+
+export function Index() {
+  const [tabValue, setTabValue] = useState('react')
+
+  return (
+    <Tabs.Root value={tabValue} onValueChange={(value) => setTabValue(value)}>
+      <Tabs.List>
+        <Tab.Trigger value="video" disabled>
+          Video
+        </Tab.Trigger>
+        <Tab.Trigger value="music">Music</Tab.Trigger>
+      </Tabs.List>
+      <Tabs.Panels>
+        <Tab.Panel value="video">Content on Video</Tab.Panel>
+        <Tab.Panel value="music">Content on Music</Tab.Panel>
+      </Tabs.Panels>
+    </Tabs.Root>
+  )
+}
+```
+
+## Vertical Tabs
+
+By default, the tabs are horizontal. To change the orientation, set the `orientation` prop value to `vertical`.
+
+```js
+import { Tabs } from '@mojaui/Tabs'
+
+export function Index() {
+  return (
+    <Tabs.Root orientation="vertical">
+      <Tabs.List>
+        <Tab.Trigger value="video" disabled>
+          Video
+        </Tab.Trigger>
+        <Tab.Trigger value="music">Music</Tab.Trigger>
+      </Tabs.List>
+      <Tabs.Panels>
+        <Tab.Panel value="video">Content on Video</Tab.Panel>
+        <Tab.Panel value="music">Content on Music</Tab.Panel>
+      </Tabs.Panels>
+    </Tabs.Root>
+  )
+}
+```
+
+## Using render props
+
+The `Trigger` component exposes details of its internal state via render props which can be used to dynamically customize aspects of the component based on its current state.
+
+```js
+import { Tabs } from '@mojaui/tabs'
+
+export function Index() {
+  return (
+    <Tabs.Root>
+      <Tabs.List>
+        <Tab.Trigger variant="primary" value="photo">
+          {(details) => (details.selected ? 'Selected' : 'Photo')}
+        </Tab.Trigger>
+        <Tab.Trigger value="video">Video</Tab.Trigger>
+        <Tab.Trigger value="music">Music</Tab.Trigger>
+      </Tabs.List>
+    </Tabs.Root>
+  )
+}
+```
+
+## API Reference
+
+<Properties>
+
+<Property name="initialTab" type="string">
+  The initial value of the tabs when it is first rendered
+</Property>
+<Property name="orientation" type="horizontal | vertical">
+  The orientation of the tabs. - horizontal: only left and right arrow key
+  navigation will work - vertical: only up and down arrow key navigation will
+  work
+</Property>
+<Property name="value" type="boolean">
+  The selected tab id
+</Property>
+<Property name="lazy" type="boolean">
+  Whether to enable lazy mounting
+</Property>
+<Property name="onValueChange" type="(details: ValueChangeDetails) => void">
+  Function to call when the selected tab changes
+</Property>
+<Property name="onFocusChange" type="(details: FocusChangeDetails) => void">
+  Function to call when the focused tab changes
+</Property>
+
+<Property name="[data-orientation]">The orientation of the tabs</Property>
+<Property name="[data-activeTab]">The currently active tab </Property>
+</Properties>
+
+### Trigger
+
+<Properties>
+  <Property name="value" type="string">
+    The value of the tab
+  </Property>
+  <Property name="variant" type="primary | pill | outline" default="primary">
+    The variant of the tab
+  </Property>
+
+  <Property name="[data-disabled]"> Present when disabled </Property>
+  <Property name="[data-selected]"> Present when selected </Property>
+</Properties>
+
+## Accessibility
+
+This component adheres to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs" target="_blank">
+Tabs WAI-ARIA design pattern </a>
+
+## Keyboard Support
+
+<Properties>
+  <Property name="Tab">
+    When focus moves unto the tabs, focuses the active trigger. When a trigger
+    is focused, it moves focus to the active content.
+  </Property>
+  <Property name="ArrowDown">
+    Moves focus to the next trigger and activates associated content when
+    orientation is vertical.
+  </Property>
+  <Property name="ArrowUp">
+    Moves focus to the previous trigger and activates associated content when
+    orientation is vertical.
+  </Property>
+  <Property name="ArrowRight">
+    Moves focus to the next trigger and activates associated content when
+    orientation is horizontal.
+  </Property>
+  <Property name="ArrowLeft">
+    Moves focus to the previous trigger and activates associated content when
+    orientation is horizontal.
+  </Property>
+  <Property name="Home">
+    Moves focus to the first trigger and activates associated content.
+  </Property>
+  <Property name="End">
+    Moves focus to the last trigger and activates associated content.
+  </Property>
+</Properties>
+
+## Examples
+
+<Note>Tabs Example use cases go here</Note>

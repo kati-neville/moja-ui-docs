@@ -1,0 +1,166 @@
+export const metadata = {
+  title: 'Switch',
+  description: 'Switch component',
+}
+
+# Switch
+
+The Switch component is used to toggle between two states.
+
+## Installation
+
+<CodeGroup>
+
+```bash {{ title: 'npm' }}
+npm install @mojaui/switch
+```
+
+```bash {{ title: 'yarn' }}
+yarn add @mojaui/switch
+```
+
+```bash {{ title: 'pnpm' }}
+pnpm install @mojaui/switch
+```
+
+```bash {{ title: 'bun' }}
+bun add @mojaui/switch
+```
+
+</CodeGroup>
+
+## Usage
+
+The Switch component can be used as follows:
+
+```js
+import { Switch } from '@mojaui/switch'
+
+export function Index() {
+  return (
+    <Switch.Root>
+      <Switch.Control>
+        <Switch.Thumb />
+      </Switch.Control>
+      <Switch.Label>Label</Switch.Label>
+    </Switch.Root>
+  )
+}
+```
+
+## Controlled Switch
+
+The state of the Switch can be managed using the `checked` and the `onCheckedChange` props.
+
+```js
+import { Switch } from '@mojaui/switch'
+
+export function Index() {
+  const [isChecked, setIsChecked] = useState()
+
+  return (
+    <Switch.Root
+      checked={isChecked}
+      onCheckedChange={(e) => setIsChecked(e.checked)}
+    >
+      <Switch.Control>
+        <Switch.Thumb />
+      </Switch.Control>
+      <Switch.Label>Label</Switch.Label>
+    </Switch.Root>
+  )
+}
+```
+
+## With Custom Icons
+
+You can pass custom icons as children to the thumb component.
+
+```js
+import { Switch } from '@mojaui/switch'
+import { SunDim } from 'moja-icons'
+
+export function Index() {
+  return (
+    <Switch.Root>
+      <Switch.Control>
+        <Switch.Thumb>
+          <SunDim />
+        </Switch.Thumb>
+      </Switch.Control>
+      <Switch.Label>Label</Switch.Label>
+    </Switch.Root>
+  )
+}
+```
+
+## Using render props
+
+The Switch component exposes details of its internal state via render props which can be used to dynamically customize aspects of the component based on its current state.
+
+```js
+import { SunDim } from 'moja-icons'
+import { Switch } from '@mojaui/switch'
+
+export function Index() {
+  return (
+    <Switch.Root>
+      {(details) => {
+        console.log(details)
+        return (
+          <>
+            <Switch.Control>
+              <Switch.Thumb></Switch.Thumb>
+            </Switch.Control>
+            <Switch.Label>Label</Switch.Label>
+          </>
+        )
+      }}
+    </Switch.Root>
+  )
+}
+```
+
+## API Reference
+
+<Properties>
+
+<Property name="checked" type="boolean">
+  Whether the Switch is checked
+</Property>
+<Property name="defaultChecked" type="boolean">
+  The default checked state of the switch component
+</Property>
+<Property name="disabled" type="boolean">
+  Whether the Switch is disabled
+</Property>
+<Property name="name" type="string">
+  The name of the input field in a switch (Useful for form submission)
+</Property>
+<Property name="required" type="boolean">
+  if <strong>true</strong>, the switch input is marked as required
+</Property>
+<Property name="onCheckedChange" type="(details: CheckedChangeDetails) => void">
+  Function to call when the Switch is clicked
+</Property>
+
+<Property name="[data-disabled]">Present when disabled</Property>
+<Property name="[data-hover]">Present when hovered</Property>
+<Property name="[data-focus]">Present when focused</Property>
+<Property name="[data-state]">"checked" | "unchecked"</Property>
+</Properties>
+
+## Accessibility
+
+This component adheres to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/switch/" target="_blank">
+Switch WAI-ARIA design pattern </a>
+
+## Keyboard Support
+
+<Properties>
+  <Property name="Space | Enter"> Toggle the switch </Property>
+</Properties>
+
+## Examples
+
+<Note>Switch Example use cases go here</Note>

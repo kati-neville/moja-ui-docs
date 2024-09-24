@@ -18,6 +18,7 @@ interface NavGroup {
   links: Array<{
     title: string
     href: string
+    check?: boolean
   }>
 }
 
@@ -37,7 +38,7 @@ function TopLevelNavItem({
     <li className="md:hidden">
       <Link
         href={href}
-        className="block py-1 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+        className="block py-1 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
       >
         {children}
       </Link>
@@ -63,7 +64,7 @@ function NavLink({
       href={href}
       aria-current={active ? 'page' : undefined}
       className={clsx(
-        'flex justify-between gap-2 py-1 pr-3 text-sm transition',
+        'flex justify-between gap-2 py-1 pr-3 transition',
         isAnchorLink ? 'pl-7' : 'pl-4',
         active
           ? 'text-zinc-900 dark:text-white'
@@ -169,7 +170,7 @@ function NavigationGroup({
     <li className={clsx('relative mt-6', className)}>
       <motion.h2
         layout="position"
-        className="font-semibold text-zinc-900 dark:text-white"
+        className="text-lg font-semibold text-zinc-900 dark:text-white"
       >
         {group.title}
       </motion.h2>
@@ -193,6 +194,9 @@ function NavigationGroup({
             <motion.li key={link.href} layout="position" className="relative">
               <NavLink href={link.href} active={link.href === pathname}>
                 {link.title}
+                {link.check ? (
+                  <div className="absolute right-0 top-1/3 h-2 w-2 rounded-full bg-red-500"></div>
+                ) : null}
               </NavLink>
               <AnimatePresence mode="popLayout" initial={false}>
                 {link.href === pathname && sections.length > 0 && (
@@ -237,8 +241,15 @@ export const navigation: Array<NavGroup> = [
       { title: 'Welcome', href: '/' },
       { title: 'Get Started', href: '/get-started' },
       { title: 'Figma Kit', href: '/figma' },
-      { title: 'Styling', href: '/style-guide' },
+      { title: 'Styling', href: '/style-guide', check: true },
       { title: 'Changelog', href: '/changelog' },
+    ],
+  },
+  {
+    title: 'Typography',
+    links: [
+      { title: 'Heading', href: '/heading' },
+      { title: 'Text', href: '/text' },
     ],
   },
   {
@@ -248,11 +259,41 @@ export const navigation: Array<NavGroup> = [
       { title: 'Alert', href: '/alert' },
       { title: 'Avatar', href: '/avatar' },
       { title: 'Badge', href: '/badge' },
-      { title: 'Button', href: '/button' },
+      { title: 'Button', href: '/button', check: true },
+      { title: 'Button Group', href: '/button-group' },
       { title: 'Callout', href: '/callout' },
       { title: 'Checkbox', href: '/checkbox' },
+      { title: 'Chip', href: '/chip' },
+      { title: 'Date Picker', href: '/date-picker', check: true },
+      { title: 'Divider', href: '/divider' },
+      { title: 'Dropdown Menu', href: '/dropdown-menu' },
+      { title: 'File upload', href: '/file-upload', check: true },
+      { title: 'Input', href: '/input' },
+      { title: 'Link', href: '/link', check: true },
+      { title: 'Modal', href: '/modal' },
+      { title: 'Overlay', href: '/overlay' },
+      { title: 'Popover', href: '/popover' },
+      { title: 'Progress Bar', href: '/progress-bar' },
+      { title: 'Progress Circle', href: '/progress-circle' },
       { title: 'Radio', href: '/radio' },
+      { title: 'Select', href: '/select' },
+      { title: 'Switch', href: '/switch' },
+      { title: 'Text Area', href: '/textarea' },
       { title: 'Toast', href: '/toast' },
+      { title: 'Tabs', href: '/tabs' },
+    ],
+  },
+
+  {
+    title: 'To be done',
+    links: [
+      { title: 'Data Row', href: '/data-row' },
+      { title: 'Notification', href: '/notification' },
+      { title: 'Rich Text Toolbar', href: '/rich-text' },
+      { title: 'Slider', href: '/slider' },
+      { title: 'Status', href: '/status' },
+      { title: 'Steps', href: '/steps' },
+      { title: 'WYSIWYG Editor', href: '/text-editor' },
     ],
   },
 ]
